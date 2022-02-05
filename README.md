@@ -68,6 +68,6 @@
 
 # Credit KUMApt#0001 (Original Script)
 
-- This Script Is With 3D Draw Text
+- The original script is with 3D text & markers
 
 https://github.com/DanielCoelh0/qb-lift
