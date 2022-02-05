@@ -12,7 +12,7 @@
 
 # How To?
 
-- This is how you add more targets to the script
+- How to add target for elevator 
 
 ```
 [1] = { name = "CHANGE_NAME_HERE", location = vector3(x, y, z), width = 1, length = 1, heading = h, minz = z - 1, maxz = z + 1},
