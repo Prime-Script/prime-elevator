@@ -14,11 +14,12 @@ Interact Sound - https://github.com/qbcore-framework/interact-sound
 
 This is how you add more targets to the script
 
-```[1] = { name = "Ground Floor", location = vector3(x, y, z), width = 1, length = 1, heading = h, minz = z - 1, maxz = z + 1},```
+``[1] = { name = "Ground Floor", location = vector3(x, y, z), width = 1, length = 1, heading = h, minz = z - 1, maxz = z + 1},``
 
 This is how you add more working elevators to the script
 
-```["PillBoxUnRestricted"] = {
+```
+["PillBoxUnRestricted"] = {
         Sound = "liftSoundBellRing",
         Name = "Pillbox Elevator",
         Floors = {
@@ -35,4 +36,5 @@ This is how you add more working elevators to the script
                 ExitHeading = "262.86"
             },
         }
-    }```
+    }
+    ```
