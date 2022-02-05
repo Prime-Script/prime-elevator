@@ -28,14 +28,14 @@ This is how you add more working elevators to the script
             [1] = {
                 Label = "CHANGE_NAME_HERE",
                 FloorDesc = "CHANGE_NAME_HERE",
-                Coords = vector3(330.43, -601.16, 43.28),
-                ExitHeading = "70.91"
+                Coords = vector3(x, y, z),
+                ExitHeading = "h"
             },
             [2] = {
                 Label = "CHANGE_NAME_HERE",
                 FloorDesc = "CHANGE_NAME_HERE",
-                Coords = vector3(345.62, -582.54, 28.8),
-                ExitHeading = "262.86"
+                Coords = vector3(x, y, z),
+                ExitHeading = "h"
             },
         }
     }
