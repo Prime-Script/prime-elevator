@@ -8,7 +8,7 @@
 
 # Optional Dependency
 
-- Interact Sound - https://github.com/qbcore-framework/interact-sound
+- Interact Sound - https://github.com/qbcore-framework/interact-sound (The sound used can be found in sounds)
 
 # How To?
 
