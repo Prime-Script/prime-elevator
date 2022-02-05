@@ -2,17 +2,17 @@
 
 # Dependency
 
-QBCore Framework - https://github.com/qbcore-framework/qb-core
+- QBCore Framework - https://github.com/qbcore-framework/qb-core
 
-QBCore Target - https://github.com/BerkieBb/qb-target
+- QB-Target - https://github.com/BerkieBb/qb-target
 
 # Optional Dependency
 
-Interact Sound - https://github.com/qbcore-framework/interact-sound
+- Interact Sound - https://github.com/qbcore-framework/interact-sound
 
 # How To?
 
-This is how you add more targets to the script
+- This is how you add more targets to the script
 
 ```
 [1] = { name = "CHANGE_NAME_HERE", location = vector3(x, y, z), width = 1, length = 1, heading = h, minz = z - 1, maxz = z + 1},
