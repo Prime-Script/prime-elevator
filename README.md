@@ -41,6 +41,8 @@ This is how you add more working elevators to the script
     }
 ```
 
-# Credit KUMApt#0001
+# Credit KUMApt#0001 (Original Script)
+
+- This Script Is With 3D Draw Text
 
 https://github.com/DanielCoelh0/qb-lift
