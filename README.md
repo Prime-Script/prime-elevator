@@ -22,7 +22,7 @@
 
 ```
 ["CHANGE_NAME_HERE"] = {
-    Group = {"police", "ambulance"}, -- Add jobs to be granted access to use the elevator
+    Group = {"job1", "job2"}, -- Add jobs to be granted access to use the elevator
     Sound = "SOUND_NAME_HERE", -- This sound must be inside interact-sound / client / html / sounds
     Name = "CHANGE_NAME_HERE",
     Floors = {
