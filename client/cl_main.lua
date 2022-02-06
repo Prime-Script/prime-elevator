@@ -39,7 +39,7 @@ CreateThread(function()
                   action = function(entity) 
                     TriggerEvent('qb-lift:callLift', k)
                   end,
-                  icon = "fas fa-key",
+                  icon = "fas fa-chevron-circle-up",
                   label = "Elevator",
                 },
             },
