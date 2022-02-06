@@ -16,7 +16,7 @@ https://streamable.com/kcj95a
 
 - Interact Sound - https://github.com/qbcore-framework/interact-sound (The sound used can be found in sounds)
 
-# TODO List 
+# ToDo List 
 
 - Item Restricted Floors
 
