@@ -4,7 +4,7 @@
 
 - The script is currently set up to (Gabz PillBox Hosptial)
 
-[Exmaple Video](https://medal.tv/games/gta-v/clips/a6tf8fjeYZvz-/d1337holaWtY?invite=cr-MSw1cUUsMTc4OTk4Mjcs)
+[Exmaple Video](https://streamable.com/kcj95a)
 
 # Dependency
 
