@@ -4,7 +4,7 @@
 
 - The script is currently set up to (Gabz PillBox Hosptial)
 
-[Exmaple Video](https://streamable.com/kcj95a)
+https://streamable.com/kcj95a
 
 # Dependency
 
@@ -15,6 +15,12 @@
 # Optional Dependency
 
 - Interact Sound - https://github.com/qbcore-framework/interact-sound (The sound used can be found in sounds)
+
+# TODO List 
+
+- Item Restricted Floors
+
+- Make Elevator useless if dead, cuffed or in last stand (Done)
 
 # How To?
 
@@ -28,7 +34,7 @@
 
 ```
 ["CHANGE_NAME_HERE"] = {
-    Group = {"job1", "job2"}, -- Add jobs to be granted access to use the elevator
+    Group = {"police", "ambulance", "cartel", "lostmc"}, -- Add Jobs / Gangs to be granted access to use the elevator
     Sound = "SOUND_NAME_HERE", -- This sound must be inside interact-sound / client / html / sounds
     Name = "CHANGE_NAME_HERE",
     Floors = {

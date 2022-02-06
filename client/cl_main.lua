@@ -1,6 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerData = {}
-local PlayerJob, PlayerGang = {}
+local PlayerJob = {}
+local PlayerGang = {}
 local floorsMenu = {}
 
 AddEventHandler('onResourceStart', function(resource)
@@ -28,7 +29,7 @@ CreateThread(function()
         exports['qb-target']:AddBoxZone(v.name, v.location, v.width, v.length, {
             name = v.name,
             heading = v.heading,
-            debugPoly = false,
+            debugPoly = Config.PolyZone,
             minZ = v.minz,
             maxZ = v.maxz,
         }, {
@@ -39,7 +40,7 @@ CreateThread(function()
                     TriggerEvent('qb-lift:callLift', k)
                   end,
                   icon = "fas fa-key",
-                  label = "Call The Elevator",
+                  label = "Elevator",
                 },
             },
             distance = 2.5
@@ -83,11 +84,10 @@ function IsAuthorized(lift)
     return false
 end
 
-RegisterNetEvent('qb-lift:changeFloor')
-AddEventHandler('qb-lift:changeFloor', function(data)
+local function changeFloor(data)
     local ped = PlayerPedId()
 
-    QBCore.Functions.Progressbar("Call_The_Lift", Config.Language[Config.UseLanguage].Waiting, 8000, false, false, {
+    QBCore.Functions.Progressbar("Call_The_Lift", Config.Language[Config.UseLanguage].Waiting, Config.WaitTime, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -109,10 +109,10 @@ AddEventHandler('qb-lift:changeFloor', function(data)
         DoScreenFadeIn(600)
         
     end)
-end)
+end
 
 RegisterNetEvent('qb-lift:callLift')
-AddEventHandler('qb-lift:callLift', function()
+AddEventHandler('qb-lift:callLift', function(playerId)
     Wait(1000)
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -120,11 +120,19 @@ AddEventHandler('qb-lift:callLift', function()
     for k, v in pairs(Config.Elevators) do
         for i, b in pairs(Config.Elevators[k].Floors) do
             local liftDist = #(coords - b.Coords)
-            if liftDist <= 4 then
+            if liftDist <= 5 then
                 inLiftRange = true
-                if liftDist <= 1.5 then
+                if liftDist <= 2.5 then
                     if not IsPedInAnyVehicle(ped) then
-                        openFloorsMenu(k, i)
+                        QBCore.Functions.GetPlayerData(function(PlayerData)
+                            if PlayerData.metadata["isdead"] or isHandcuffed or PlayerData.metadata["inlaststand"] then
+                                QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Unable, 'error')
+                            else
+                                if not IsPedInAnyVehicle(ped) then
+                                    openFloorsMenu(k, i)
+                                end
+                            end
+                        end)
                     end
                 end
             end
@@ -140,14 +148,14 @@ AddEventHandler('qb-lift:checkFloorPermission', function(data)
     if Config.Elevators[data.lift].Group then
         if data.floor.Restricted then
             if IsAuthorized(data.lift) then
-                TriggerEvent('qb-lift:changeFloor', data)
+                changeFloor(data)
             else
                 QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Restricted, "error")
             end
         else
-            TriggerEvent('qb-lift:changeFloor', data)
+            changeFloor(data)
         end
     else
-        TriggerEvent('qb-lift:changeFloor', data)
+        changeFloor(data)
     end
 end)
