@@ -4,7 +4,7 @@
 
 - The script is currently set up to (Gabz PillBox Hosptial)
 
-https://streamable.com/kcj95a
+![Video](https://streamable.com/kcj95a)
 
 # Dependency
 
