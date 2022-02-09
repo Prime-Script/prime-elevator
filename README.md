@@ -56,6 +56,31 @@ https://streamable.com/kcj95a
 }
 ```
 
+- How to add elevator with items & with sound
+
+```
+["CHANGE_NAME_HERE"] = {
+    Sound = "SOUND_NAME_HERE", -- This sound must be inside interact-sound / client / html / sounds
+    Name = "CHANGE_NAME_HERE",
+    Floors = {
+        [1] = {
+            Label = "CHANGE_NAME_HERE",
+            FloorDesc = "CHANGE_NAME_HERE",
+            Item = KeyCard,
+            Coords = vector3(x, y, z),
+            ExitHeading = "h"
+        },
+        [2] = {
+            Label = "CHANGE_NAME_HERE",
+            FloorDesc = "CHANGE_NAME_HERE",
+            Item = KeyCard,
+            Coords = vector3(x, y, z),
+            ExitHeading = "h"
+        },
+    }
+}
+```
+
 - How to add elevator without permissions & without sound
 
 ```
