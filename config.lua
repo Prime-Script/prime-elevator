@@ -35,6 +35,7 @@ Config.Elevators = {
             [1] = {
                 Label = "First Floor",
                 FloorDesc = "Hospital Upper Lobby",
+                Require = "thermite",
                 Coords = vector3(330.43, -601.16, 43.28),
                 ExitHeading = "70.91"
             },
@@ -70,6 +71,7 @@ Config.Language = {
     ["en"] = {
         Waiting = "Waiting for the Elevator...",
         Restricted = "Access Restricted!",
+        Item = "Access Restricted!",
         CurrentFloor = "Current Floor: ",
         Unable = "You Can't Use The Elevator...",
     },

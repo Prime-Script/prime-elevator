@@ -75,11 +75,22 @@ local function openFloorsMenu(lift, floor)
     exports['qb-menu']:openMenu(floorsMenu)
 end
 
-function IsAuthorized(lift)
-    for a=1, #Config.Elevators[lift].Group do
+function IsAuthorizedJob(lift)
+    for a = 1, #Config.Elevators[lift].Group do
         if PlayerJob.name == Config.Elevators[lift].Group[a] or PlayerGang.name == Config.Elevators[lift].Group[a] then
             return true
         end
+    end
+    return false
+end
+
+function IsAuthorizedItem(lift)
+    for b = 1, #Config.Elevators[lift].Item do
+        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(hasItem)
+            if hasItem then
+                return true
+            end
+        end, Config.Elevators[lift].Item[b])
     end
     return false
 end
@@ -145,9 +156,9 @@ end)
 
 RegisterNetEvent('qb-lift:checkFloorPermission')
 AddEventHandler('qb-lift:checkFloorPermission', function(data)
-    if Config.Elevators[data.lift].Group then
-        if data.floor.Restricted then
-            if IsAuthorized(data.lift) then
+    if Config.Elevators[data.lift].Group or Config.Elevators[data.lift].Item then
+        if data.floor.Restricted or data.floor.Require then
+            if IsAuthorizedJob(data.lift) or IsAuthorizedItem(data.lift) then
                 changeFloor(data)
             else
                 QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Restricted, "error")
