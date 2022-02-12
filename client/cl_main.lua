@@ -156,9 +156,9 @@ end)
 
 RegisterNetEvent('qb-lift:checkFloorPermission')
 AddEventHandler('qb-lift:checkFloorPermission', function(data)
-    if Config.Elevators[data.lift].Group or Config.Elevators[data.lift].Item then
-        if data.floor.Restricted or data.floor.Require then
-            if IsAuthorizedJob(data.lift) or IsAuthorizedItem(data.lift) then
+    if Config.Elevators[data.lift].Group then
+        if data.floor.Restricted then
+            if IsAuthorizedJob(data.lift)then
                 changeFloor(data)
             else
                 QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Restricted, "error")
