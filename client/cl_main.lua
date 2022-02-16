@@ -84,13 +84,11 @@ function IsAuthorizedJob(lift)
     return false
 end
 
-function IsAuthorizedItem(lift)
-    for b = 1, #Config.Elevators[lift].Item do
-        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(hasItem)
-            if hasItem then
-                return true
-            end
-        end, Config.Elevators[lift].Item[b])
+function IsAuthorized(lift)
+    for a=1, #Config.Elevators[lift].Group do
+        if PlayerJob.name == Config.Elevators[lift].Group[a] or PlayerGang.name == Config.Elevators[lift].Group[a] then
+            return true
+        end
     end
     return false
 end
@@ -131,9 +129,9 @@ AddEventHandler('qb-lift:callLift', function(playerId)
     for k, v in pairs(Config.Elevators) do
         for i, b in pairs(Config.Elevators[k].Floors) do
             local liftDist = #(coords - b.Coords)
-            if liftDist <= 5 then
+            if liftDist <= 15 then
                 inLiftRange = true
-                if liftDist <= 2.5 then
+                if liftDist <= 7.5 then
                     if not IsPedInAnyVehicle(ped) then
                         QBCore.Functions.GetPlayerData(function(PlayerData)
                             if PlayerData.metadata["isdead"] or isHandcuffed or PlayerData.metadata["inlaststand"] then
@@ -158,7 +156,7 @@ RegisterNetEvent('qb-lift:checkFloorPermission')
 AddEventHandler('qb-lift:checkFloorPermission', function(data)
     if Config.Elevators[data.lift].Group then
         if data.floor.Restricted then
-            if IsAuthorizedJob(data.lift)then
+            if IsAuthorized(data.lift) then
                 changeFloor(data)
             else
                 QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Restricted, "error")
