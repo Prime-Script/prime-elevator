@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'SocialPeely#4095'
-description 'Lift System For QB-Core'
+author "Prime Scripts | SocialPeely#4095"
+description 'Elevator System For QBCore'
 version '1.0.0'
 
 shared_script 'config.lua'

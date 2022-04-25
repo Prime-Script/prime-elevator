@@ -16,12 +16,6 @@ https://streamable.com/kcj95a
 
 - Interact Sound - https://github.com/qbcore-framework/interact-sound (The sound used can be found in sounds)
 
-# ToDo List 
-
-- Item Restricted Floors
-
-- Make Elevator useless if dead, cuffed or in last stand (Done)
-
 # How To?
 
 - How to add target for elevator 
@@ -56,31 +50,6 @@ https://streamable.com/kcj95a
 }
 ```
 
-- How to add elevator with items & with sound
-
-```
-["CHANGE_NAME_HERE"] = {
-    Sound = "SOUND_NAME_HERE", -- This sound must be inside interact-sound / client / html / sounds
-    Name = "CHANGE_NAME_HERE",
-    Floors = {
-        [1] = {
-            Label = "CHANGE_NAME_HERE",
-            FloorDesc = "CHANGE_NAME_HERE",
-            Item = KeyCard,
-            Coords = vector3(x, y, z),
-            ExitHeading = "h"
-        },
-        [2] = {
-            Label = "CHANGE_NAME_HERE",
-            FloorDesc = "CHANGE_NAME_HERE",
-            Item = KeyCard,
-            Coords = vector3(x, y, z),
-            ExitHeading = "h"
-        },
-    }
-}
-```
-
 - How to add elevator without permissions & without sound
 
 ```
@@ -105,8 +74,7 @@ https://streamable.com/kcj95a
 
 # License
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-International License][cc-by-nc-sa].
+This script provided by Prime Scripts, is under the protection of [Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 

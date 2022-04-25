@@ -5,8 +5,8 @@ Config.UseSoundEffect = true
 
 Config.Elevators = {
     ["PillBoxOne"] = {
-        Sound = "liftSoundBellRing",
         Name = "Elevator Two",
+        Sound = "LiftSoundBellRing",
         Floors = {
             [1] = {
                 Label = "Second Floor",
@@ -29,13 +29,12 @@ Config.Elevators = {
         }
     },
     ["PillBoxTwo"] = {
-        Sound = "liftSoundBellRing",
         Name = "Elevator One",
+        Sound = "LiftSoundBellRing",
         Floors = {
             [1] = {
                 Label = "First Floor",
                 FloorDesc = "Hospital Upper Lobby",
-                Require = "thermite",
                 Coords = vector3(330.43, -601.16, 43.28),
                 ExitHeading = "70.91"
             },
@@ -49,7 +48,7 @@ Config.Elevators = {
     }
 }
 
-Config.PolyZone = true -- This will show the box zones | If set to false it will hide the box zones
+Config.PolyZone = false -- This will show the box zones | If set to false it will hide the box zones
 
 Config.WaitTime = 8000 -- This will set the time for the ProgressBar | 1000 = 1 second
 
@@ -71,13 +70,7 @@ Config.Language = {
     ["en"] = {
         Waiting = "Waiting for the Elevator...",
         Restricted = "Access Restricted!",
-        Item = "Access Restricted!",
         CurrentFloor = "Current Floor: ",
         Unable = "You Can't Use The Elevator...",
     },
-    ["pt"] = {
-        Waiting = "À espera do Elevador...",
-        Restricted = "Piso restrito!",
-        CurrentFloor = "Piso Atual: "
-    }
 }

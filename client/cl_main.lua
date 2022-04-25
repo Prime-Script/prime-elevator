@@ -37,7 +37,7 @@ CreateThread(function()
                 {
                   type = "client",
                   action = function(entity) 
-                    TriggerEvent('qb-lift:callLift', k)
+                    TriggerEvent('prime-elevator:callLift', k)
                   end,
                   icon = "fas fa-chevron-circle-up",
                   label = "Elevator",
@@ -63,7 +63,7 @@ local function openFloorsMenu(lift, floor)
                 header = '' .. Config.Elevators[lift].Floors[j].Label ..'',
                 txt = '' .. Config.Elevators[lift].Floors[j].FloorDesc ..'',
                 params = {
-                    event = 'qb-lift:checkFloorPermission',
+                    event = 'prime-elevator:checkFloorPermission',
                     args = {
                         lift = lift,
                         floor = Config.Elevators[lift].Floors[j],
@@ -75,17 +75,8 @@ local function openFloorsMenu(lift, floor)
     exports['qb-menu']:openMenu(floorsMenu)
 end
 
-function IsAuthorizedJob(lift)
-    for a = 1, #Config.Elevators[lift].Group do
-        if PlayerJob.name == Config.Elevators[lift].Group[a] or PlayerGang.name == Config.Elevators[lift].Group[a] then
-            return true
-        end
-    end
-    return false
-end
-
 function IsAuthorized(lift)
-    for a=1, #Config.Elevators[lift].Group do
+    for a = 1, #Config.Elevators[lift].Group do
         if PlayerJob.name == Config.Elevators[lift].Group[a] or PlayerGang.name == Config.Elevators[lift].Group[a] then
             return true
         end
@@ -108,20 +99,19 @@ local function changeFloor(data)
     }, {}, {}, function() -- Done
         StopAnimTask(ped, "anim@apt_trans@elevator", "elev_1", 1.0)
         DoScreenFadeOut(500)
-        Citizen.Wait(1000)
+        Wait(1000)
         if Config.UseSoundEffect then
             TriggerServerEvent("InteractSound_SV:PlayOnSource", Config.Elevators[data.lift].Sound, 0.05)
         end
         SetEntityCoords(ped, data.floor.Coords.x, data.floor.Coords.y, data.floor.Coords.z, 0, 0, 0, false)
         SetEntityHeading(ped, data.floor.ExitHeading)
-        Citizen.Wait(1000)
+        Wait(1000)
         DoScreenFadeIn(600)
         
     end)
 end
 
-RegisterNetEvent('qb-lift:callLift')
-AddEventHandler('qb-lift:callLift', function(playerId)
+RegisterNetEvent('prime-elevator:callLift', function(playerId)
     Wait(1000)
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -129,17 +119,15 @@ AddEventHandler('qb-lift:callLift', function(playerId)
     for k, v in pairs(Config.Elevators) do
         for i, b in pairs(Config.Elevators[k].Floors) do
             local liftDist = #(coords - b.Coords)
-            if liftDist <= 15 then
+            if liftDist <= 10 then
                 inLiftRange = true
-                if liftDist <= 7.5 then
-                    if not IsPedInAnyVehicle(ped) then
+                if liftDist <= 5.0 then
+                    if not IsPedInAnyVehicle(playerPed) then
                         QBCore.Functions.GetPlayerData(function(PlayerData)
                             if PlayerData.metadata["isdead"] or isHandcuffed or PlayerData.metadata["inlaststand"] then
                                 QBCore.Functions.Notify(Config.Language[Config.UseLanguage].Unable, 'error')
                             else
-                                if not IsPedInAnyVehicle(ped) then
-                                    openFloorsMenu(k, i)
-                                end
+                                openFloorsMenu(k, i)
                             end
                         end)
                     end
@@ -152,8 +140,7 @@ AddEventHandler('qb-lift:callLift', function(playerId)
     end
 end)
 
-RegisterNetEvent('qb-lift:checkFloorPermission')
-AddEventHandler('qb-lift:checkFloorPermission', function(data)
+RegisterNetEvent('prime-elevator:checkFloorPermission', function(data)
     if Config.Elevators[data.lift].Group then
         if data.floor.Restricted then
             if IsAuthorized(data.lift) then
