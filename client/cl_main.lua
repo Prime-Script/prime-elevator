@@ -119,9 +119,9 @@ RegisterNetEvent('prime-elevator:callLift', function(playerId)
     for k, v in pairs(Config.Elevators) do
         for i, b in pairs(Config.Elevators[k].Floors) do
             local liftDist = #(coords - b.Coords)
-            if liftDist <= 10 then
+            if liftDist <= 7.5 then
                 inLiftRange = true
-                if liftDist <= 5.0 then
+                if liftDist <= 3.0 then
                     if not IsPedInAnyVehicle(playerPed) then
                         QBCore.Functions.GetPlayerData(function(PlayerData)
                             if PlayerData.metadata["isdead"] or isHandcuffed or PlayerData.metadata["inlaststand"] then
